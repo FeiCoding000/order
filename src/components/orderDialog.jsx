@@ -78,7 +78,7 @@ export const OrderDialog = ({ open, close, type, formik }) => {
                   value={formik.values.milk}
                   onChange={formik.handleChange}
                 >
-                  {["Full Cream", "Lite", "Oat", "Soy", "Almond", "None"].map((milk) => (
+                  {["Full Cream", "Lite", "Oat", "Soy", "Almond","Lactose free", "None"].map((milk) => (
                     <MenuItem key={milk} value={milk}>
                       {milk}
                     </MenuItem>
