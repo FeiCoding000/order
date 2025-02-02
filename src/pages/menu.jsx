@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavigationBar } from "../components/navigationBar"; 
 import { ItemCard } from "../components/itemCard";
 import { OrderDialog } from "../components/orderDialog";
 import { useFormik } from "formik";
@@ -129,12 +130,15 @@ export const Menu = () => {
   },[formik.values.type])
 
   return (
-    <Box sx={{ textAlign: "center", py: 4, bgcolor: "black", minHeight: "100vh" }}>
-      <Typography variant="h3" sx={{ fontWeight: "bold", mb: 4 }}>Menu</Typography>
+
+    
+    <Box sx={{ textAlign: "center", py: 4, bgcolor: "transparent", minHeight: "100vh" }}>
+      
+      <NavigationBar/>
 
       {Object.keys(menuItems).map((category) => (
-        <Box key={category} sx={{ mb: 4 }}>
-          <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
+        <Box key={category} sx={{ mb: 4 }} id={`${category.toLowerCase()}-section`}>
+          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 , border: 1}}>
             {category === "Choc&Chai" ? "Chocolate & Chai" : category}
           </Typography>
 
@@ -146,6 +150,7 @@ export const Menu = () => {
                     borderRadius: 2,
                     overflow: "hidden",
                     transition: "transform 0.2s",
+                    color: "#220054",
                     "&:hover": { transform: "scale(1.02)" },
                   }}
                   onClick={() => {
@@ -161,7 +166,7 @@ export const Menu = () => {
                     alt={item}
                   />
                   {/* 文字部分 */}
-                  <CardContent sx={{ bgcolor: "white", p: 2 }}>
+                  <CardContent sx={{ bgcolor: "#ffe6cc", p: 2 }}>
                     <Typography variant="h6">{item}</Typography>
                   </CardContent>
                 </Card>
