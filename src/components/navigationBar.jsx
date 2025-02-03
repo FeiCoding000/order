@@ -1,9 +1,10 @@
 import { Link } from "react-scroll";
 import { Box, Grid, Button,  } from "@mui/material";
+import { BorderBottom } from "@mui/icons-material";
 
 export const NavigationBar = () => {
   return (
-    <Box sx={{  bgcolor: "transparent"}} >
+    <Box sx={{  bgcolor: "transparent", borderBottom:1 }} >
       <Grid container spacing={4} justifyContent="center">
       <Grid item>
       <img 

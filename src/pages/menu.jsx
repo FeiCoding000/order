@@ -27,7 +27,7 @@ export const Menu = () => {
   const handleResultClose = () => setIsResultOpen(false);
     // 菜单项
   const menuItems = {
-    COFFEE: ["Flat White", "Latte", "Long Black", "Espresso", "Long Macchiato", "Mocha", "Short Macchiato", "Cappuccino", "Dirty Chai", "Piccolo"],
+    COFFEE: ["Flat White", "Latte", "Long Black", "Espresso", "Long Macchiato", "Mocha", "Short Macchiato", "Cappuccino", "Dirty Chai", "Piccolo", "Scyne Crema"],
     TEA: ["English Breakfast", "Earl Gray", "Green Tea", "Peppermint", "Lemongrass Ginger", "Chamomile"],
     "Choc&Chai": ["Chocolate", "Chai"],
   };
@@ -50,7 +50,8 @@ export const Menu = () => {
     "Chai": "https://www.soulorigin.com.au/cdn/shop/files/Iced_Coffee_43003b27-6d3d-4e92-94a7-710db556d261_800x.jpg?v=1713743728",
     "Peppermint": "https://assets.clevelandclinic.org/transform/LargeFeatureImage/a3ec7f82-35f9-4e41-8450-030498e44617/spearmint-Tea-1418206475_770x533_jpg",
     "Lemongrass Ginger": "https://www.siftandsimmer.com/wp-content/uploads/2022/02/lemongrass-tea2.jpg",
-    "Chamomile": "https://media.istockphoto.com/id/1277086333/photo/herbal-chamomile-tea-and-chamomile-flowers-near-teapot-and-tea-glass-on-wooden-table.jpg?s=612x612&w=0&k=20&c=dz3g5-x2_sWLmUUW1YyqyYork1P8-xNksZ7kpaYxZ7g="
+    "Chamomile": "https://media.istockphoto.com/id/1277086333/photo/herbal-chamomile-tea-and-chamomile-flowers-near-teapot-and-tea-glass-on-wooden-table.jpg?s=612x612&w=0&k=20&c=dz3g5-x2_sWLmUUW1YyqyYork1P8-xNksZ7kpaYxZ7g=",
+    "Scyne Crema": "https://www.soulorigin.com.au/cdn/shop/files/Espresso_2000x2000_403c7691-7e6b-4fa5-92a4-374e30ca26d7_800x.jpg?v=1730687649" 
   }
   // 处理 Formik 类型
   const handleFormikType = (type) => {
@@ -138,19 +139,19 @@ export const Menu = () => {
 
       {Object.keys(menuItems).map((category) => (
         <Box key={category} sx={{ mb: 4 }} id={`${category.toLowerCase()}-section`}>
-          <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 , border: 1}}>
+          <Typography variant="h5" sx={{ mb: 1 , mt: 2  }}>
             {category === "Choc&Chai" ? "Chocolate & Chai" : category}
           </Typography>
 
           <Grid container spacing={3} justifyContent="center">
             {menuItems[category].map((item, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+              <Grid item key={index} xs={12} sm={6} md={4} lg={2.5}>
                 <Card
                   sx={{
                     borderRadius: 2,
                     overflow: "hidden",
                     transition: "transform 0.2s",
-                    color: "#220054",
+                    color: "white",
                     "&:hover": { transform: "scale(1.02)" },
                   }}
                   onClick={() => {
@@ -166,7 +167,7 @@ export const Menu = () => {
                     alt={item}
                   />
                   {/* 文字部分 */}
-                  <CardContent sx={{ bgcolor: "#ffe6cc", p: 2 }}>
+                  <CardContent sx={{ bgcolor: "#B4B5DB", p: 2 }}>
                     <Typography variant="h6">{item}</Typography>
                   </CardContent>
                 </Card>
