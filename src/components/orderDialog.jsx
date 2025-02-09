@@ -1,8 +1,9 @@
 import React from "react";
-import AcUnitIcon from '@mui/icons-material/AcUnit';
-import BlockIcon from '@mui/icons-material/Block';
-import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
-import HailIcon from '@mui/icons-material/Hail';
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import BlockIcon from "@mui/icons-material/Block";
+import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
+import HailIcon from "@mui/icons-material/Hail";
+import { purple } from '@mui/material/colors';
 import {
   Dialog,
   DialogTitle,
@@ -17,9 +18,11 @@ import {
   Grid,
   FormControl,
   InputLabel,
+  colors,
 } from "@mui/material";
 
 export const OrderDialog = ({ open, close, type, formik }) => {
+  const color = purple[900];
   return (
     <Dialog open={open} onClose={close} maxWidth="sm" fullWidth>
       <Box
@@ -78,7 +81,15 @@ export const OrderDialog = ({ open, close, type, formik }) => {
                   value={formik.values.milk}
                   onChange={formik.handleChange}
                 >
-                  {["Full Cream", "Lite", "Oat", "Soy", "Almond","Lactose free", "None"].map((milk) => (
+                  {[
+                    "Full Cream",
+                    "Lite",
+                    "Oat",
+                    "Soy",
+                    "Almond",
+                    "Lactose free",
+                    "None",
+                  ].map((milk) => (
                     <MenuItem key={milk} value={milk}>
                       {milk}
                     </MenuItem>
@@ -91,21 +102,30 @@ export const OrderDialog = ({ open, close, type, formik }) => {
             {[
               { name: "isIced", label: "Iced", icon: AcUnitIcon },
               { name: "isDecaf", label: "Decaf", icon: BlockIcon },
-              { name: "isExtraHot", label: "Extra Hot", icon: DeviceThermostatIcon },
+              {
+                name: "isExtraHot",
+                label: "Extra Hot",
+                icon: DeviceThermostatIcon,
+              },
               { name: "isClient", label: "Client", icon: HailIcon },
             ].map(({ name, label, icon: Icomponent }) => (
-              <Grid item xs={6} key={name}>
-                <Box display="flex" alignItems="center" justifyContent="space-between">
+              <Grid item xs={6} key={name} sx={{color:"#464E7E"}}>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
                   <Box display="flex" alignItems="left">
-                  <Icomponent color="secondary"/>
-                  <Typography>{label}</Typography>
+                    <Icomponent/>
+                    <Typography>{label}</Typography>
                   </Box>
                   <Switch
                     name={name}
                     checked={formik.values[name]}
+                    color="secondary"
                     // onChange={formik.handleChange}
-                    onChange={(e) =>{
-                      const {checked} = e.target;
+                    onChange={(e) => {
+                      const { checked } = e.target;
                       if (name === "isIced" && checked) {
                         formik.setFieldValue("isIced", true);
                         formik.setFieldValue("isExtraHot", false);
@@ -116,15 +136,16 @@ export const OrderDialog = ({ open, close, type, formik }) => {
                         formik.setFieldValue(name, checked);
                       }
                     }}
-                    color="secondary"
-                    disabled={name === "isDecaf" && formik.values.category !== "coffee"}
+                    disabled={
+                      name === "isDecaf" && formik.values.category !== "coffee"
+                    }
                   />
                 </Box>
               </Grid>
             ))}
 
             {/* Sugar Slider */}
-            <Grid item xs={12}>
+            <Grid item xs={12} >
               <Typography gutterBottom>Sugar</Typography>
               <Slider
                 name="sugar"
@@ -133,9 +154,19 @@ export const OrderDialog = ({ open, close, type, formik }) => {
                 min={0}
                 max={5}
                 step={1}
-                color="secondary"
+                sx={{color:"#464E7E"}}
                 valueLabelDisplay="auto"
               />
+            </Grid>
+
+            {/* customerName or add info */}
+            <Grid item xs={12} >
+              <Typography gutterBottom>Name or other requirments</Typography>
+              <TextField
+                name="customerName"
+                value={formik.values.customerName}
+                onChange={formik.handleChange}
+              ></TextField>
             </Grid>
 
             {/* Submit Button */}
@@ -144,13 +175,13 @@ export const OrderDialog = ({ open, close, type, formik }) => {
                 type="submit"
                 variant="contained"
                 size="large"
-                color="secondary"
                 sx={{
                   px: 4,
                   py: 1,
                   fontSize: "1rem",
                   fontWeight: "bold",
                   borderRadius: 2,
+                  backgroundColor: "#464e7e"
                 }}
               >
                 Submit
