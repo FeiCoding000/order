@@ -6,10 +6,6 @@ export const ItemCard = ({data, onClick}) => {
   return (
     <Card onClick={onClick}>
         {data}
-
-        
-
     </Card>
-    
   )
 }

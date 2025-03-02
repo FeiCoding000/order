@@ -28,7 +28,7 @@ export const Menu = () => {
     // 菜单项
   const menuItems = {
     COFFEE: ["Flat White", "Latte", "Long Black", "Espresso", "Long Macchiato", "Mocha", "Short Macchiato", "Cappuccino", "Dirty Chai", "Piccolo", "Scyne Crema"],
-    TEA: ["English Breakfast", "Earl Gray", "Green Tea", "Peppermint", "Lemongrass Ginger", "Chamomile"],
+    TEA: ["English Breakfast", "Earl Grey", "Green Tea", "Peppermint", "Lemongrass Ginger", "Chamomile"],
     "Choc&Chai": ["Chocolate", "Chai"],
   };
   //image mapping
@@ -93,6 +93,7 @@ export const Menu = () => {
       isDecaf: false,
       isExtraHot: false,
       isClient: false,
+      customerName:"",
       timeStamp: ""
     },
     onSubmit: async (values) => {
@@ -102,7 +103,7 @@ export const Menu = () => {
         const orderNumber = snapshot.exists() ? snapshot.val() : 0; 
         const newOrderNumber = parseInt(orderNumber) + 1;
 
-        const timeStamp = dayjs().format("DD-MM-YYYY");
+        const timeStamp = dayjs().format("DD-MM-YYYY HH:MM");
         const newValues = {...values, timeStamp};
 
         await set(ref(getDatabase(), `Orders/${newOrderNumber}`), newValues);
