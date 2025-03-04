@@ -4,8 +4,10 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import { useNavigate } from "react-router-dom";
 
 export const Topbar = () => {
+  const navigate = useNavigate();
   return (
     <Box display="flex" justifyContent="space-between" position={"sticky"} top={0} zIndex={1} bgcolor="#464e7e">
       <Box
@@ -24,7 +26,7 @@ export const Topbar = () => {
         <IconButton>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => navigate("/login")}>
           <PersonOutlinedIcon />
         </IconButton>
         </Box>
