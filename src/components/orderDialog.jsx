@@ -36,9 +36,8 @@ export const OrderDialog = ({ open, close, type, formik }) => {
       >
         <DialogTitle
           sx={{
-            fontWeight: "bold",
             textAlign: "center",
-            pb: 2,
+            pb: 1,
             borderBottom: "1px solid",
             borderColor: "grey.300",
           }}
@@ -46,7 +45,7 @@ export const OrderDialog = ({ open, close, type, formik }) => {
           Customize Your Order
         </DialogTitle>
 
-        <Typography variant="h5" textAlign="center" sx={{ my: 2 }}>
+        <Typography variant="h6" textAlign="center" sx={{ my: 2 }}>
           {type}
         </Typography>
 
@@ -161,11 +160,13 @@ export const OrderDialog = ({ open, close, type, formik }) => {
 
             {/* customerName or add info */}
             <Grid item xs={12} >
-              <Typography gutterBottom>Name or other requirments</Typography>
+              <Typography gutterBottom>Name & Requirment</Typography>
               <TextField
+                fullWidth
                 name="customerName"
                 value={formik.values.customerName}
                 onChange={formik.handleChange}
+                sx={{height: "70px"}}
               ></TextField>
             </Grid>
 
@@ -176,8 +177,8 @@ export const OrderDialog = ({ open, close, type, formik }) => {
                 variant="contained"
                 size="large"
                 sx={{
-                  px: 4,
-                  py: 1,
+                  px: 3,
+                  py: 0.8,
                   fontSize: "1rem",
                   fontWeight: "bold",
                   borderRadius: 2,

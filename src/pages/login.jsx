@@ -8,6 +8,7 @@ import {
   } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
 
@@ -16,11 +17,14 @@ export const Login = () => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [user, setUser] = React.useState(null);
+    const navigate = useNavigate();
   
     React.useEffect(() => {
       onAuthStateChanged(auth, (user) => {
-        if (user)
+        if (user){
           setUser(user);
+          navigate("/menu");
+        }
         else
           setUser(null);
       })

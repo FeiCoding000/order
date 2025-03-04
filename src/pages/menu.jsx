@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { NavigationBar } from "../components/navigationBar"; 
 import { ItemCard } from "../components/itemCard";
 import { OrderDialog } from "../components/orderDialog";
 import { useFormik } from "formik";
@@ -15,6 +14,8 @@ import {
 import { Box, Typography, Grid, Card, CardMedia, CardContent, Button } from "@mui/material";
 import { OrderResult } from "../components/orderResult";
 import dayjs from "dayjs";
+import {db, firestore} from "../config/firebase";
+// import {collection, getDocs, query, where} from "firebase/firestore";
 
 export const Menu = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -68,8 +69,8 @@ export const Menu = () => {
 
   };
     //get data--order number
-    const deRef = ref(getDatabase());
-    const getOrderNumber = get(child(deRef, "Order Number"))
+    const deRef = ref(db, "Order Number")
+    const getOrderNumber = get(deRef)
       .then((snapshot) => {
         if (snapshot.exists()) {
           console.log("number in database:",snapshot.val());
@@ -99,17 +100,17 @@ export const Menu = () => {
     onSubmit: async (values) => {
       console.log("Submitted values:", values);
       try {
-        const snapshot = await get(child(deRef, "Order Number"));
+        const snapshot = await get(deRef);
         const orderNumber = snapshot.exists() ? snapshot.val() : 0; 
         const newOrderNumber = parseInt(orderNumber) + 1;
 
-        const timeStamp = dayjs().format("DD-MM-YYYY HH:MM");
+        const timeStamp = dayjs().format("DD-MM-YYYY");
         const newValues = {...values, timeStamp};
 
-        await set(ref(getDatabase(), `Orders/${newOrderNumber}`), newValues);
+        await set(ref(db, `Orders/${newOrderNumber}`), newValues);
         console.log("Data submitted successfully");
     
-        await set(ref(getDatabase(), `Order Number`), newOrderNumber);
+        await set(ref(db, `Order Number`), newOrderNumber);
     
         setIsResultOpen(true);
         setOrderNumber(newOrderNumber);
@@ -135,24 +136,19 @@ export const Menu = () => {
 
     
     <Box sx={{ textAlign: "center", py: 4, bgcolor: "transparent", minHeight: "100vh" }}>
-      
-      <NavigationBar/>
-
       {Object.keys(menuItems).map((category) => (
         <Box key={category} sx={{ mb: 4 }} id={`${category.toLowerCase()}-section`}>
-          <Typography variant="h5" sx={{ mb: 1 , mt: 2  }}>
-            {category === "Choc&Chai" ? "Chocolate & Chai" : category}
-          </Typography>
 
-          <Grid container spacing={3} justifyContent="center">
+          <Grid container spacing={3} justifyContent="left">
             {menuItems[category].map((item, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4} lg={2.5}>
+              <Grid item key={index} xs={12} sm={6} md={3} lg={2.5}>
                 <Card
                   sx={{
-                    borderRadius: 2,
+                    shadow: 0,
+                    borderRadius: 0,
                     overflow: "hidden",
                     transition: "transform 0.2s",
-                    color: "white",
+                    bgcolor: "transparent",
                     "&:hover": { transform: "scale(1.02)" },
                   }}
                   onClick={() => {
@@ -163,13 +159,14 @@ export const Menu = () => {
                   {/* 图片部分 */}
                   <CardMedia
                     component="img"
-                    height="200"
+                    height="180"
                     image={imageMapping[item]}
                     alt={item}
                   />
                   {/* 文字部分 */}
-                  <CardContent sx={{ bgcolor: "#B4B5DB", p: 2 }}>
-                    <Typography variant="h6">{item}</Typography>
+                  <CardContent 
+                    sx={{  color: "white", bgcolor: "transparent", p: 2, textAlign: "left", height: "10px" }}>
+                    <Typography >{item}</Typography>
                   </CardContent>
                 </Card>
               </Grid>

@@ -1,4 +1,5 @@
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import { Box, Grid, Button,  } from "@mui/material";
 import { BorderBottom } from "@mui/icons-material";
 
@@ -15,20 +16,31 @@ export const NavigationBar = () => {
       </Grid>
       
         <Grid item>
-          <Link to="coffee-section" smooth={true} duration={500}>
+          <ScrollLink to="coffee-section" smooth={true} duration={500}>
             <Button color="white">Coffee</Button>
-          </Link>
+          </ScrollLink>
         </Grid>
         <Grid item>
-          <Link to="tea-section" smooth={true} duration={500}>
+          <ScrollLink to="tea-section" smooth={true} duration={500}>
             <Button color="white">Tea</Button>
-          </Link>
+          </ScrollLink>
         </Grid>
         <Grid item>
-          <Link to="choc&chai-section" smooth={true} duration={500}>
+          <ScrollLink to="choc&chai-section" smooth={true} duration={500}>
             <Button color="white">Chocolate & Chai</Button>
-          </Link>
+          </ScrollLink>
         </Grid>
+        <Grid item>
+          <RouterLink to ="/">
+          <Button color="white">Home</Button>
+          </RouterLink>
+          
+          <RouterLink to ="/data">
+          <Button color="white">Statistic</Button>
+          </RouterLink>
+          <RouterLink to ="/menu">
+          <Button color="white">Menu</Button></RouterLink>
+          </Grid>
       </Grid>
     </Box>
   );
