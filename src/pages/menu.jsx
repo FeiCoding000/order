@@ -45,7 +45,7 @@ export const Menu = () => {
     "Piccolo": "https://www.soulorigin.com.au/cdn/shop/files/Piccolo_2000x2000_742ffea6-7a40-472c-9789-342ca519f5f8_400x.jpg?v=1730687648",
     "Dirty Chai": "https://www.soulorigin.com.au/cdn/shop/files/Mocha_2000x2000_V2_800x.jpg?v=1730687649",
     "English Breakfast": "https://cdn.shopify.com/s/files/1/0382/1836/7107/t/3/assets/dehydrated-tea-hero-image-1639694925155.jpg?v=1639694928",
-    "Earl Gray": "https://www.theteashelf.com/cdn/shop/articles/How_is_Earl_Grey_different_from_black_tea_-_The_Tea_Shelf_900x.png?v=1702007889",
+    "Earl Grey": "https://www.theteashelf.com/cdn/shop/articles/How_is_Earl_Grey_different_from_black_tea_-_The_Tea_Shelf_900x.png?v=1702007889",
     "Green Tea": "https://static.wixstatic.com/media/64b42c_8f336462892749bf9b4b5ae0becd4905~mv2.jpg/v1/fill/w_740,h_493,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/64b42c_8f336462892749bf9b4b5ae0becd4905~mv2.jpg",
     "Chocolate": "https://www.soulorigin.com.au/cdn/shop/files/Iced_Mocha_edd9a3c8-782c-44d1-ab56-c1d3adf137c7_800x.jpg?v=1713837116",
     "Chai": "https://www.soulorigin.com.au/cdn/shop/files/Iced_Coffee_43003b27-6d3d-4e92-94a7-710db556d261_800x.jpg?v=1713743728",
