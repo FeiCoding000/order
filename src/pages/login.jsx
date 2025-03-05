@@ -45,15 +45,33 @@ export const Login = () => {
 
     }
   return (
-    <div>
-      {!user&&<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />}
-      {!user&&<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />}
-      {!user&&<button onClick={handleLogin}>Login</button>}
-      
-      {user && <span>Welcome! {user.email}</span>}
-      {user && <Button  variant="outlined" color="primary" onClick={() => signOut(auth)}>Logout</Button>}
-      {/* {!user && <Link to="/register">Register</Link>} */}
+    <div className="login_container">
+      <div className="login">
+     
+     <div>
+     <img 
+        src="https://cdn.prod.website-files.com/650aedb6397a7021a593e810/672ac5664163926064db6bd7_scyne-logo.svg" 
+        alt="Scyne Logo" 
+        style={{ height: '40px', width: 'auto' }}
+      />
+     </div>
+     <div className="login_input">
+     {!user&&<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />}
+     </div>
+     <div className="login_input">
+     {!user&&<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />}
+     </div>
+     <div>
+     {!user&&<button onClick={handleLogin}>Login</button>}
+     </div>
+     
+     {user && <span>Welcome! {user.email}</span>}
+     {user && <Button  variant="outlined" color="primary" onClick={() => signOut(auth)}>Logout</Button>}
+     {/* {!user && <Link to="/register">Register</Link>} */}
+   </div>
+
     </div>
+    
   )
 }
 
