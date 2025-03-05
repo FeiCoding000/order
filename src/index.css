@@ -36,4 +36,10 @@
   height: 100%;
   width: 100%;
 }
+.topbar_icons {
+  color: white;
+}
 
+.css-53g0n7-MuiButtonBase-root-MuiIconButton-root{
+  color: white;
+}

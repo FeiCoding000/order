@@ -16,18 +16,18 @@ export const Topbar = () => {
       ></Box>
 
       {/* icons */}
-      <Box display="flex">
+      <Box display="flex" className="topbar_icons" >
         <IconButton>
-          <LightModeOutlinedIcon />
+          <LightModeOutlinedIcon className="topbar_icon" sx={{ color: 'white' }} />
         </IconButton>
         <IconButton>
-          <NotificationsOutlinedIcon />
+          <NotificationsOutlinedIcon className="topbar_icon" sx={{ color: 'white' }}/>
         </IconButton>
         <IconButton>
-          <SettingsOutlinedIcon />
+          <SettingsOutlinedIcon className="topbar_icon" sx={{ color: 'white' }}/>
         </IconButton>
-        <IconButton onClick={() => navigate("/login")}>
-          <PersonOutlinedIcon />
+        <IconButton className="topbar_icon" onClick={() => navigate("/login")}>
+          <PersonOutlinedIcon sx={{ color: 'white' }}/>
         </IconButton>
         </Box>
     </Box>
