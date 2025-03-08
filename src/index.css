@@ -18,9 +18,11 @@
 
 .app,
 .content {
+  max-width: 1600px;
   height: 100%;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
+  margin: auto;
 }
 .sidebar {
   width: 250px;
